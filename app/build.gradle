@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
+    configurations.all {
+        resolutionStrategy.force 'com.android.support:support-annotations:23.0.1'
+    }
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
     defaultConfig {
@@ -13,7 +16,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -24,8 +27,10 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.google.code.gson:gson:2.4'
+//    compile 'com.squareup.okhttp3:okhttp:3.6.0'
     compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.2'
     compile 'com.ibm.watson.developer_cloud:java-sdk:3.5.3'
+    compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.2'
     testCompile 'junit:junit:4.12'
 }
