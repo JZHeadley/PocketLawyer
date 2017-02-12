@@ -1,6 +1,7 @@
 package com.jzheadley.pocketlawyer.data.model;
 
 public class Intervention {
+
     private String triggerName;
     private String promptText;
 
