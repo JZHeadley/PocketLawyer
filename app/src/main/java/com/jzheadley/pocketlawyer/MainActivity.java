@@ -1,13 +1,10 @@
 package com.jzheadley.pocketlawyer;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.jzheadley.pocketlawyer.controller.Controller;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
 
 import java.io.IOException;
@@ -32,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, questionsActivity.class);
-                intent.putExtra("STTService", (Parcelable) speechToTextService);
-                startActivity(intent);
             }
         });
 

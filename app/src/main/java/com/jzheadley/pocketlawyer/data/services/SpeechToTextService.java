@@ -39,8 +39,12 @@ public class SpeechToTextService {
     public void pauseRecording() throws InterruptedException {
         if (thread.getState().equals(Thread.State.WAITING)) {
             thread.notify();
+            Log.d(TAG, "pauseRecording: Playing");
         } else {
-            thread.wait();
+            synchronized (thread) {
+                Log.d(TAG, "pauseRecording: Pausing");
+                thread.wait();
+            }
         }
     }
 
