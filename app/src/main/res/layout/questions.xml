@@ -8,6 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:onClick="onClick"
         android:src="@drawable/ic_pause_2x" />
 
     <ImageButton
@@ -15,6 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/pauseButton"
+        android:onClick="onClick"
         android:gravity="center"
         android:src="@drawable/ic_mic_2x"
         />
