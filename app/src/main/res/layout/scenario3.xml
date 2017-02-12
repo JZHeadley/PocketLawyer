@@ -5,21 +5,29 @@
 
     <TextView
         android:id="@+id/text"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/popup2"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:layout_height="1.5in"
+        android:paddingTop="20dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/light_blue"
         android:textSize="30dp"
         />
 
     <Button
         android:id="@+id/done_popup_button"
         android:layout_width="wrap_content"
+        android:textColor="@color/off_white"
+        android:textSize="20dp"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:text="@string/done_button"
-        android:layout_marginTop="5dp"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/text"
+        android:layout_marginTop="1.1in"
+
         />
 
 

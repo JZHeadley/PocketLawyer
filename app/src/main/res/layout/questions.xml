@@ -7,9 +7,10 @@
 
     <ImageButton
         android:id="@+id/pauseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:gravity="center_horizontal"
+        android:background="@color/dark_grey"
         android:onClick="onClick"
         android:src="@drawable/ic_pause" />
 
@@ -81,7 +82,8 @@
 
     <Button
         android:id="@+id/done"
-        android:background="@color/dark_grey"
+        android:background="@color/black"
+        android:textColor="@color/off_white"
         android:layout_width="1in"
         android:layout_height="wrap_content"
         android:layout_below="@+id/scenario3"
@@ -94,5 +96,6 @@
         android:text="@string/done_button"
         android:textAllCaps="false"
         android:textSize="20sp" />
+
 
 </RelativeLayout>
