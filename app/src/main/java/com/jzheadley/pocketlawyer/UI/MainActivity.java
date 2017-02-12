@@ -1,4 +1,4 @@
-package com.jzheadley.pocketlawyer;
+package com.jzheadley.pocketlawyer.UI;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneInputStream;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
+import com.jzheadley.pocketlawyer.R;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private SpeechToText speechService;
     private MicrophoneInputStream capture;
     private Button recordButton;
+    private Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 (new SpeechToTextService()).startRecording();
             }
         });
+
     }
 
 
