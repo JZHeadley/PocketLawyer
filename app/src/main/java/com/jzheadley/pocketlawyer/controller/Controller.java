@@ -31,7 +31,8 @@ public class Controller {
     private Interpreter interpreter;
 
     private Controller() {
-        Log.i(TAG, "Controller: ");
+        Log.i(TAG, "Controller: Constructor called");
+        if (instance == null) Log.i(TAG, "Controller: instance is null");
         HashMap<String, Intervention> interventions = new HashMap<>();
         interventions.put("why", new Intervention("why", "I don't know, officer."));
         interventions.put("search", new Intervention("search", "I don't know, officer."));
