@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">PocketLawyer</string>
-    <string name="watson_username">539b5b54-ed9e-4b69-b230-5e9d87168c19</string>
-    <string name="watson_password">eR3ZouirbNdT</string>
+    <string name="stt_username">539b5b54-ed9e-4b69-b230-5e9d87168c19</string>
+    <string name="stt_password">eR3ZouirbNdT</string>
+    <string name="tts_username">f47ff4a4-6cab-4996-9902-f9fa987f0ba3</string>
+    <string name="tts_password">1rLOXX3geKel</string>
     <string name="keep_calm">Keep Calm,\nListen to Us</string>
     <string name="next_button">Next</string>
     <string name="record_button">Record</string>
