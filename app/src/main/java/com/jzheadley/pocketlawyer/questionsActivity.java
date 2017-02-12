@@ -33,9 +33,18 @@ public class questionsActivity extends Activity{
                 //custom dialog settings
                 TextView text = (TextView) dialog.findViewById(R.id.text);
                 text.setText("Scenario 1 works!");
-                ImageView image = (ImageView) dialog.findViewById(R.id.image);
-                image.setImageResource(R.drawable.ic_launcher);
+                //ImageView image = (ImageView) dialog.findViewById(R.id.image);
+                //image.setImageResource(R.drawable.);
 
+                Button dialogButton = (Button) dialog.findViewById(R.id.done_popup_button);
+
+                dialogButton.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+            dialog.show();
             }
         });
     }
