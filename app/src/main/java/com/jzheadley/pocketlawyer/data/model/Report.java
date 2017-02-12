@@ -4,27 +4,41 @@ import android.location.Location;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBIgnore;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBIndexHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 
-import java.util.List;
+import java.util.Set;
 
 @DynamoDBTable(tableName = "PocketLawyerReports")
 public class Report {
+    private int reportID;
+
     private String interactionID;
     private int resultIndex;
+    private String userID;
 
     private String location;
-    private List<String> tags;
+
+    private Set<String> tags;
     private SpeechResults speechResults;
+
+    private String transcript;
     private boolean userIsFemale;
     private String userEthnicity;
 
-    @DynamoDBHashKey(attributeName = "interactionID")
     private Location coordinates;
 
+    public int getReportID() {
+        return reportID;
+    }
 
-    @DynamoDBIndexHashKey(attributeName = "interactionID")
+    public void setReportID(int reportID) {
+        this.reportID = reportID;
+    }
+
+    @DynamoDBHashKey(attributeName = "interactionID")
     public String getInteractionID() {
         return interactionID;
     }
@@ -33,11 +47,16 @@ public class Report {
         this.interactionID = interactionID;
     }
 
-    @DynamoDBAttribute(attributeName = "location")
+    @DynamoDBAttribute
     public String getLocation() {
         return location;
     }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    @DynamoDBIndexHashKey
     public int getResultIndex() {
         return resultIndex;
     }
@@ -46,20 +65,26 @@ public class Report {
         this.resultIndex = resultIndex;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     @DynamoDBAttribute(attributeName = "tags")
-    public List<String> getTags() {
+    public Set<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(Set<String> tags) {
         this.tags = tags;
     }
 
-    @DynamoDBAttribute(attributeName = "speechResults")
+    // @DynamoDBAttribute
+    // @DynamoDBMarshalling(marshallerClass = SpeechResultsMarshaller.class)
+    @DynamoDBIgnore
     public SpeechResults getSpeechResults() {
         return speechResults;
     }
@@ -86,11 +111,19 @@ public class Report {
         this.userEthnicity = userEthnicity;
     }
 
-    public Location getCoordinates() {
-        return coordinates;
+    // public Location getCoordinates() {
+    //     return coordinates;
+    // }
+    //
+    // public void setCoordinates(Location coordinates) {
+    //     this.coordinates = coordinates;
+    // }
+    @DynamoDBAttribute
+    public String getTranscript() {
+        return transcript;
     }
 
-    public void setCoordinates(Location coordinates) {
-        this.coordinates = coordinates;
+    public void setTranscript(String transcript) {
+        this.transcript = transcript;
     }
 }

@@ -23,9 +23,9 @@ public class Interpreter {
     private static final String[] cities = {"Washington, DC", "Richmond, VA", "Alexandria, VA", "Baltimore, MD"};
 
 
-    private static String interactionID = null;
-    private static String location = null;
-    private static Location coordinates = null;
+    private int interactionID = 0;
+    private String location = null;
+    private Location coordinates = null;
 
 
     private SpeechToTextService speechToText;
@@ -40,7 +40,7 @@ public class Interpreter {
     public void startSTT() {
         Log.d(TAG, "startSTT: Called");
         Random rand = new Random(System.currentTimeMillis());
-        interactionID = String.valueOf(rand.nextInt());
+        interactionID = rand.nextInt();
         location = cities[rand.nextInt(4)];
         coordinates = new Location("GPS");
         coordinates.setLongitude(38.0 + 2.0 * rand.nextDouble());
@@ -74,7 +74,9 @@ public class Interpreter {
             Log.d(TAG, "interpretResults: transcript: " + transcript);
             text = transcript.getAlternatives().get(0).getTranscript();
 
-            keywordsFound = transcript.getKeywordsResult().keySet();
+            if (transcript.getKeywordsResult() != null) {
+                keywordsFound = transcript.getKeywordsResult().keySet();
+            }
         } catch (Exception ex) {
             Log.e(TAG, "interpretResults: caught", ex);
         }
@@ -83,17 +85,20 @@ public class Interpreter {
 
 
         Report report = new Report();
-        report.setInteractionID(interactionID);
+        report.setReportID((interactionID * 10000) + speechResults.getResultIndex());
+        report.setInteractionID(String.valueOf(interactionID));
         report.setResultIndex(speechResults.getResultIndex());
         //location = "Washington, DC";
-        //
-        coordinates.setLongitude(38.904862);
-        coordinates.setLatitude(-77.033642);
+        //coordinates.setLongitude(38.904862);
+        //coordinates.setLatitude(-77.033642);
+
+        report.setSpeechResults(speechResults);
+        report.setTranscript(text);
 
         report.setLocation(location);
-        report.setCoordinates(coordinates);
+        // report.setCoordinates(coordinates);
 
-        report.setTags(new ArrayList<String>(keywordsFound));
+        report.setTags(keywordsFound);
         report.setUserIsFemale(false);
         report.setUserEthnicity("White");
 

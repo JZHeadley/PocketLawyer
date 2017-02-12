@@ -29,36 +29,37 @@ public class Controller {
 
     private Interpreter interpreter;
 
-    private HashMap<String, Intervention> interventions;
-
     private Controller() {
         Log.i(TAG, "Controller: Constructor called");
         if (instance == null) {
             Log.i(TAG, "Controller: instance is null");
         }
-        interventions = new HashMap<>();
-        interventions.put("why", new Intervention("why", "You do not need to volunteer any information"));
-        interventions.put("search", new Intervention("search", "You don't have to consent to searches"));
-        interventions.put("detained", new Intervention("detained", "Ask if you are free to go."));
-        interventions.put("be_polite", new Intervention("be_polite", "Stay calm and be polite"));
-        interventions.put("cooperate", new Intervention("cooperate", "Stay calm and cooperate"));
+        HashMap<String, Intervention> interventions = new HashMap<>();
+        HashMap<String, String> keyWordsToTriggers = new HashMap<>();
+        if (true) {
+            interventions.put("search", new Intervention("search", "You don't have to consent to searches"));
+            keyWordsToTriggers.put("trunk", "search");
+            keyWordsToTriggers.put("open", "search");
+            keyWordsToTriggers.put("search", "search");
+
+            interventions.put("detained", new Intervention("detained", "Ask if you are free to go."));
+            keyWordsToTriggers.put("questions", "detained");
+        }
+        if (true) {
+            interventions.put("why", new Intervention("why", "You do not need to volunteer any information"));
+            keyWordsToTriggers.put("do you know", "why");
+            keyWordsToTriggers.put("why", "why");
+
+            interventions.put("be_polite", new Intervention("be_polite", "Stay calm and be polite"));
+            keyWordsToTriggers.put("screw you", "be_polite");
+            interventions.put("cooperate", new Intervention("cooperate", "Stay calm and cooperate"));
+            keyWordsToTriggers.put("step out", "cooperate");
+            keyWordsToTriggers.put("get out", "cooperate");
+
+        }
 
 
         this.executive = new Executive(interventions);
-
-        HashMap<String, String> keyWordsToTriggers = new HashMap<>();
-        keyWordsToTriggers.put("trunk", "search");
-        keyWordsToTriggers.put("open", "search");
-        keyWordsToTriggers.put("search", "search");
-
-        keyWordsToTriggers.put("do you know", "why");
-        keyWordsToTriggers.put("why", "why");
-
-        keyWordsToTriggers.put("questions", "detained");
-
-        keyWordsToTriggers.put("step out", "cooperate");
-        keyWordsToTriggers.put("get out", "cooperate");
-        keyWordsToTriggers.put("screw you", "be_polite");
         this.interpreter = new Interpreter(keyWordsToTriggers);
     }
 
@@ -124,9 +125,5 @@ public class Controller {
 
     public Executive getExecutive() {
         return executive;
-    }
-
-    public String getInterventionText(String triggerName) {
-        return interventions.get(triggerName).getPromptText();
     }
 }
