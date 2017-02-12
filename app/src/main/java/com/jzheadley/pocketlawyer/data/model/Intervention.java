@@ -12,6 +12,16 @@ public class Intervention {
     private String yesTrigger;
     private String noTrigger;
 
+    public Intervention(String triggerName, String promptText) {
+        this.triggerName = triggerName;
+        this.promptText = promptText;
+        this.recordRawResponse = false;
+        this.responseTag = null;
+        this.yesNoQuestion = false;
+        this.yesTrigger = null;
+        this.noTrigger = null;
+    }
+
     public Intervention(String triggerName, String promptText, boolean recordRawResponse, String responseTag, boolean yesNoQuestion, String yesTrigger, String noTrigger) {
         this.triggerName = triggerName;
         this.promptText = promptText;

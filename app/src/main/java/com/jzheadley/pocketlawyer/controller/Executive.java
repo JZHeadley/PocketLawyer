@@ -21,11 +21,17 @@ public class Executive {
     private HashMap<String, Intervention> interventions; //Maps triggers to interventions
     private Intervention curentIntervention = null;
 
+    public Executive(HashMap<String, Intervention> interventions) {
+        this.interventions = interventions;
+    }
+
     public void startWaiting() {
 
     }
 
     public void startInteraction() {
+        this.situationState = SIT_INTERACTING;
+        Controller.getInstance().getInterpreter().startSTT();
 
     }
 
@@ -33,15 +39,44 @@ public class Executive {
 
     }
 
+    public void trigger(String triggerName) {
+        if (triggerName == null) return;
+
+        if (triggerName == "yes") {
+            if (interventionState == INTERV_YES_NO) {
+                interventionState = INTERV_NONE;
+                trigger(curentIntervention.getYesTrigger());
+            }
+        } else if (triggerName == "no") {
+            if (interventionState == INTERV_YES_NO) {
+                interventionState = INTERV_NONE;
+                trigger(curentIntervention.getNoTrigger());
+            }
+        } else {
+            if (interventionState == INTERV_NONE) {
+                curentIntervention = interventions.get(triggerName);
+                if (curentIntervention != null) {
+                    interventionState = INTERV_WAITING_FOR_PAUSE;
+                }
+            }
+        }
+    }
+
     public void pauseDetected() {
+        if (interventionState == INTERV_WAITING_FOR_PAUSE) {
+            interventionState = INTERV_PLAYING;
+            //TODO: Text to Speech
+        }
 
     }
 
     public void playComplete() {
+        if (interventionState == INTERV_PLAYING) {
+            interventionState = INTERV_NONE;
+        }
+        //TODO : Handle
 
     }
 
-    public void trigger(String triggerName) {
 
-    }
 }
