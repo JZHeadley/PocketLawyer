@@ -43,6 +43,7 @@ public class SpeechToTextService {
             .model("en-US_BroadbandModel")
             .interimResults(true)
             .profanityFilter(false)
+            .keywordsThreshold(.75)
             .inactivityTimeout(2000);
         if (keywords.size() > 0) {
             String[] keywordArr = keywords.toArray(new String[0]);

@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
+import com.jzheadley.pocketlawyer.controller.Controller;
 import com.jzheadley.pocketlawyer.data.singletons.TextToSpeechClient;
 
 public class TextToSpeechService {
@@ -18,6 +19,7 @@ public class TextToSpeechService {
         @Override
         protected String doInBackground(String... params) {
             player.playStream(TextToSpeechClient.getInstance().synthesize(params[0], Voice.EN_MICHAEL).execute());
+            Controller.getInstance().playComplete();
             return "Did synthesize";
         }
     }
