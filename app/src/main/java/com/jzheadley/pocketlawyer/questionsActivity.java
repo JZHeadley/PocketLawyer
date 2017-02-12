@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.jzheadley.pocketlawyer.controller.Controller;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
 
-public class QuestionsActivity extends AppCompatActivity {
+public class questionsActivity extends AppCompatActivity {
 
     final Context context = this;
     boolean go = false;
