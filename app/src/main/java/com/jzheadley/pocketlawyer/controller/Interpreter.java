@@ -16,13 +16,10 @@ public class Interpreter {
 
     private static final String TAG = "Interpreter";
 
-    private Executive executive;
-
     private HashMap<String, String> keyWordsToTriggers;
 
 
     public Interpreter(HashMap<String, String> keyWordsToTriggers) {
-        this.executive = Controller.getInstance().getExecutive();
         this.keyWordsToTriggers = keyWordsToTriggers;
     }
 
@@ -56,11 +53,11 @@ public class Interpreter {
         //TODO listen for yes/no seperately;
 
         for (String keyword : keywordsFound) {   //HACK : this picks a keyword at random
-            executive.trigger(keyWordsToTriggers.get(keyword));
+            Controller.getInstance().trigger(keyWordsToTriggers.get(keyword));
             break;
         }
 
-        executive.pauseDetected();
+        Controller.getInstance().getExecutive().pauseDetected();
     }
 
 }

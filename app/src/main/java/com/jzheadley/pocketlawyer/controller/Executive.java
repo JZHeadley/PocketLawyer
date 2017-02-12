@@ -17,7 +17,6 @@ public class Executive {
     public static final int INTERV_YES_NO = 3;
     public static final int INTERV_RECORD_RESPONSE = 4;
 
-
     private int situationState;
     private int interventionState;
     private HashMap<String, Intervention> interventions; //Maps triggers to interventions
