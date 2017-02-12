@@ -22,7 +22,6 @@ public class Interpreter {
     private static final String TAG = "Interpreter";
     private static final String[] cities = {"Washington, DC", "Richmond, VA", "Alexandria, VA", "Baltimore, MD"};
 
-    private SpeechToTextService speechToText;
 
     private static String interactionID = null;
     private static String location = null;

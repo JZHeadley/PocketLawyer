@@ -9,8 +9,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.jzheadley.pocketlawyer.controller.Controller;
+
 public class questionsActivity extends Activity implements View.OnClickListener {
 
+    Dialog dialog = null;
     final Context context = this;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -20,7 +23,7 @@ public class questionsActivity extends Activity implements View.OnClickListener 
     }
 
     private void displayDialog(String title, String text, int layoutID) {
-        final Dialog dialog = new Dialog(context);
+        dialog = new Dialog(context);
         dialog.setContentView(layoutID);
         dialog.setTitle(title);
 // TODO: Find out why title doesn't appear 
@@ -33,6 +36,7 @@ public class questionsActivity extends Activity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                dialog = null;
             }
         });
         dialog.show();
@@ -42,7 +46,12 @@ public class questionsActivity extends Activity implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.scenario1:
-                displayDialog("Scenario1",getString(R.string.scenario1_text), R.layout.scenario1);
+                if(dialog!=null){
+                    dialog.dismiss();
+                    dialog = null;
+                }
+                Controller.getInstance().trigger("search");
+                displayDialog("Scenario1",Controller.getInstance().getInterventionText("search"), R.layout.scenario1);
                 break;
             case R.id.scenario2:
                 displayDialog("Scenario2",getString(R.string.scenario2_text), R.layout.scenario2);

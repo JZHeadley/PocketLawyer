@@ -29,12 +29,14 @@ public class Controller {
 
     private Interpreter interpreter;
 
+    private HashMap<String, Intervention> interventions;
+
     private Controller() {
         Log.i(TAG, "Controller: Constructor called");
         if (instance == null) {
             Log.i(TAG, "Controller: instance is null");
         }
-        HashMap<String, Intervention> interventions = new HashMap<>();
+        interventions = new HashMap<>();
         interventions.put("why", new Intervention("why", "You do not need to volunteer any information"));
         interventions.put("search", new Intervention("search", "You don't have to consent to searches"));
         interventions.put("detained", new Intervention("detained", "Ask if you are free to go."));
@@ -122,5 +124,9 @@ public class Controller {
 
     public Executive getExecutive() {
         return executive;
+    }
+
+    public String getInterventionText(String triggerName) {
+        return interventions.get(triggerName).getPromptText();
     }
 }
