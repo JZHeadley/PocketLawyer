@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.RecognizeCallback;
+import com.jzheadley.pocketlawyer.controller.Controller;
 
 public class SpeechReceivedCallback implements RecognizeCallback {
 
@@ -14,12 +15,7 @@ public class SpeechReceivedCallback implements RecognizeCallback {
      */
     @Override
     public void onTranscription(SpeechResults speechResults) {
-        // System.out.println(speechResults);
-
-        // String text = speechResults.getResults().get(0).getAlternatives().get(0).getTranscript();
-
-        // Controller model = getInstance();
-        // model.interpretResults(speechResults);
+        Controller.getInstance().interpretResults(speechResults);
     }
 
     @Override

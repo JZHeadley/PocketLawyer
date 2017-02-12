@@ -32,7 +32,9 @@ public class Controller {
 
     private Controller() {
         Log.i(TAG, "Controller: Constructor called");
-        if (instance == null) Log.i(TAG, "Controller: instance is null");
+        if (instance == null) {
+            Log.i(TAG, "Controller: instance is null");
+        }
         HashMap<String, Intervention> interventions = new HashMap<>();
         interventions.put("why", new Intervention("why", "I don't know, officer."));
         interventions.put("search", new Intervention("search", "I don't know, officer."));
@@ -84,6 +86,7 @@ public class Controller {
     } //TODO: Delete this
 
     public void interpretResults(SpeechResults speechResults) {
+        Log.d(TAG, "interpretResults() called with: speechResults = [" + speechResults + "]");
         interpreter.interpretResults(speechResults);
     }
 
