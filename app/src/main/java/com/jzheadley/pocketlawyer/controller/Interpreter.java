@@ -1,5 +1,6 @@
 package com.jzheadley.pocketlawyer.controller;
 
+import android.location.Location;
 import android.util.Log;
 
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
@@ -19,7 +20,15 @@ import java.util.Set;
 public class Interpreter {
 
     private static final String TAG = "Interpreter";
+    private static final String[] cities = {"Washington, DC", "Richmond, VA", "Alexandria, VA", "Baltimore, MD"};
+
+    private SpeechToTextService speechToText;
+
     private static String interactionID = null;
+    private static String location = null;
+    private static Location coordinates = null;
+
+
     private SpeechToTextService speechToText;
     private HashMap<String, String> keyWordsToTriggers;
 
@@ -31,7 +40,12 @@ public class Interpreter {
 
     public void startSTT() {
         Log.d(TAG, "startSTT: Called");
-        interactionID = String.valueOf(new Random(System.currentTimeMillis()).nextInt());
+        Random rand = new Random(System.currentTimeMillis());
+        interactionID = String.valueOf(rand.nextInt());
+        location = cities[rand.nextInt(4)];
+        coordinates = new Location("GPS");
+        coordinates.setLongitude(38.0 + 2.0 * rand.nextDouble());
+        coordinates.setLatitude(76.0 + 2.0 * rand.nextDouble());
 
 
         speechToText = new SpeechToTextService();
@@ -71,7 +85,15 @@ public class Interpreter {
 
         Report report = new Report();
         report.setInteractionID(interactionID);
-        report.setLocation("Richmond");
+        report.setResultIndex(speechResults.getResultIndex());
+        //location = "Washington, DC";
+        //
+        coordinates.setLongitude(38.904862);
+        coordinates.setLatitude(-77.033642);
+
+        report.setLocation(location);
+        report.setCoordinates(coordinates);
+
         report.setTags(new ArrayList<String>(keywordsFound));
         report.setUserIsFemale(false);
         report.setUserEthnicity("White");
