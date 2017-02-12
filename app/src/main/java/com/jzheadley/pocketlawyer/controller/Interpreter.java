@@ -95,7 +95,7 @@ public class Interpreter {
         report.setTranscript(text);
 
         report.setLocation(location);
-        report.setCoordinates(coordinates);
+        // report.setCoordinates(coordinates);
 
         report.setTags(keywordsFound);
         report.setUserIsFemale(false);
