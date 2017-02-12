@@ -36,7 +36,7 @@
         android:id="@+id/scenario1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="null"
+        android:background="@null"
         android:layout_below="@+id/help"
         android:onClick="onClick"
         android:text="@string/scenario1"

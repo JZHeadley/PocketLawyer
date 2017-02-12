@@ -11,9 +11,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.jzheadley.pocketlawyer.controller.Controller;
+import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
+
+import java.io.IOException;
 
 public class questionsActivity extends Activity implements View.OnClickListener {
 
+    private SpeechToTextService speechToTextService;
     final Context context = this;
     boolean go = false;
     Dialog dialog = null;
@@ -38,7 +42,13 @@ public class questionsActivity extends Activity implements View.OnClickListener 
 
             @Override
             public void onClick(View v) {
-             //   SpeechToTextService.stopRecording();
+                try {
+                    speechToTextService.stopRecording();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 if (go) {
                     v.setBackgroundResource(R.drawable.ic_mic_2x);
