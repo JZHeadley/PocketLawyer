@@ -56,8 +56,6 @@ public class Interpreter {
     public void stopSTT() {
         try {
             speechToText.stopRecording();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -76,13 +74,13 @@ public class Interpreter {
 
             if (transcript.getKeywordsResult() != null) {
                 keywordsFound = transcript.getKeywordsResult().keySet();
+
             }
         } catch (Exception ex) {
             Log.e(TAG, "interpretResults: caught", ex);
         }
         Log.d(TAG, "interpretResults: Keywords: " + keywordsFound);
         //TODO listen for yes/no seperately;
-
 
         Report report = new Report();
         report.setReportID((interactionID * 10000) + speechResults.getResultIndex());
@@ -98,16 +96,16 @@ public class Interpreter {
         report.setLocation(location);
         // report.setCoordinates(coordinates);
 
-        report.setTags(keywordsFound);
         report.setUserIsFemale(false);
         report.setUserEthnicity("White");
 
-        DynamoMapperClient.getMapper().save(report);
-
         for (String keyword : keywordsFound) {   //HACK : this picks a keyword at random
+            report.setTags(keywordsFound);
             Controller.getInstance().trigger(keyWordsToTriggers.get(keyword));
             break;
         }
+
+        DynamoMapperClient.getMapper().save(report);
 
         Controller.getInstance().getExecutive().pauseDetected();
     }

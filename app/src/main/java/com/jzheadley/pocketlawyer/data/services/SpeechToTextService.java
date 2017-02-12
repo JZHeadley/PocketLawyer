@@ -27,13 +27,17 @@ public class SpeechToTextService {
         thread.run();
     }
 
-    public void stopRecording() throws InterruptedException, IOException {
+    public void stopRecording() throws IOException {
         Log.d(TAG, "stopRecording: Stop listening Watson");
         if (thread == null) {
             return;
         } else {
             thread.end();
         }
+    }
+
+    public void pauseRecording() throws InterruptedException {
+        thread.wait();
     }
 
     public void setKeywords(ArrayList<String> keywords) {
@@ -47,7 +51,7 @@ public class SpeechToTextService {
             .model("en-US_BroadbandModel")
             .interimResults(true)
             .profanityFilter(false)
-            .keywordsThreshold(.75)
+            .keywordsThreshold(.50)
             .inactivityTimeout(2000);
         if (keywords.size() > 0) {
             String[] keywordArr = keywords.toArray(new String[0]);

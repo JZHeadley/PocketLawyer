@@ -5,10 +5,13 @@ import android.location.Location;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBIgnore;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBIndexHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.JsonMarshaller;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeakerLabel;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.Transcript;
 
+import java.util.List;
 import java.util.Set;
 
 @DynamoDBTable(tableName = "PocketLawyerReports")
@@ -30,6 +33,7 @@ public class Report {
 
     private Location coordinates;
 
+    @DynamoDBHashKey(attributeName = "reportId")
     public int getReportID() {
         return reportID;
     }
@@ -38,7 +42,7 @@ public class Report {
         this.reportID = reportID;
     }
 
-    @DynamoDBHashKey(attributeName = "interactionID")
+    @DynamoDBAttribute
     public String getInteractionID() {
         return interactionID;
     }
@@ -56,7 +60,7 @@ public class Report {
         this.location = location;
     }
 
-    @DynamoDBIndexHashKey
+    @DynamoDBAttribute
     public int getResultIndex() {
         return resultIndex;
     }
@@ -73,7 +77,8 @@ public class Report {
         this.userID = userID;
     }
 
-    @DynamoDBAttribute(attributeName = "tags")
+    // @DynamoDBAttribute
+    @DynamoDBAttribute
     public Set<String> getTags() {
         return tags;
     }
@@ -125,5 +130,33 @@ public class Report {
 
     public void setTranscript(String transcript) {
         this.transcript = transcript;
+    }
+
+    public class MySpeechResults extends SpeechResults {
+
+        public MySpeechResults() {
+        }
+
+        public MySpeechResults(SpeechResults speechResults) {
+            setResults(speechResults.getResults());
+        }
+
+        @Override
+        public void setResultIndex(int resultIndex) {
+            super.setResultIndex(resultIndex);
+        }
+
+        @Override
+        public void setResults(List<Transcript> results) {
+            super.setResults(results);
+        }
+
+        @Override
+        public void setSpeakerLabels(List<SpeakerLabel> speakerLabels) {
+            super.setSpeakerLabels(speakerLabels);
+        }
+    }
+
+    public class SpeechResultsMarshaller extends JsonMarshaller<MySpeechResults> {
     }
 }

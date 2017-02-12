@@ -12,53 +12,48 @@ import android.widget.TextView;
 
 import com.jzheadley.pocketlawyer.controller.Controller;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
-
-import java.io.IOException;
+import com.jzheadley.pocketlawyer.data.services.TextToSpeechService;
 
 public class questionsActivity extends Activity implements View.OnClickListener {
 
-    private SpeechToTextService speechToTextService;
     final Context context = this;
     boolean go = false;
     Dialog dialog = null;
     ImageButton micButton;
     ImageButton pauseButton;
-
+    private SpeechToTextService speechToTextService;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions);
         pauseButton = (ImageButton) findViewById(R.id.pauseButton);
         micButton = (ImageButton) findViewById(R.id.micButton);
-        pauseButton.setOnClickListener(new OnClickListener(){
-
-            @Override
-            public void onClick(View v ){
-              //  speechToTextService.pauseRecording();
-
-            }
-        });
-        micButton.setOnClickListener(new OnClickListener(){
+        speechToTextService = new SpeechToTextService();
+        TextToSpeechService textToSpeechService = new TextToSpeechService();
+        pauseButton.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 try {
-                    speechToTextService.stopRecording();
+                    speechToTextService.pauseRecording();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
+            }
+        });
+        micButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
                 if (go) {
                     v.setBackgroundResource(R.drawable.ic_mic_2x);
-                }
-                else{
+                } else {
                     v.setBackgroundResource(R.drawable.ic_mic_none_2x);
                 }
                 go = !go;
 
-                }
+            }
 
         });
 
@@ -83,39 +78,40 @@ public class questionsActivity extends Activity implements View.OnClickListener 
         });
         dialog.show();
     }
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.scenario1:
-                if(dialog!=null){
+                if (dialog != null) {
                     dialog.dismiss();
                     dialog = null;
                 }
                 Controller.getInstance().trigger("search");
-                displayDialog("Scenario1",Controller.getInstance().getInterventionText("search"), R.layout.scenario1);
+                displayDialog("Scenario1", Controller.getInstance().getInterventionText("search"), R.layout.scenario1);
                 break;
             case R.id.scenario2:
-                if(dialog!=null){
+                if (dialog != null) {
                     dialog.dismiss();
                     dialog = null;
                 }
                 Controller.getInstance().trigger("detained");
-                displayDialog("Scenario2",Controller.getInstance().getInterventionText("detained"), R.layout.scenario2);
+                displayDialog("Scenario2", Controller.getInstance().getInterventionText("detained"), R.layout.scenario2);
                 break;
             case R.id.scenario3:
-                if(dialog!=null){
+                if (dialog != null) {
                     dialog.dismiss();
                     dialog = null;
                 }
                 Controller.getInstance().trigger("why");
-                displayDialog("Scenario3",Controller.getInstance().getInterventionText("why"), R.layout.scenario3);
+                displayDialog("Scenario3", Controller.getInstance().getInterventionText("why"), R.layout.scenario3);
                 break;
             case R.id.scenario4:
-                if(dialog!=null){
+                if (dialog != null) {
                     dialog.dismiss();
                     dialog = null;
                 }
                 Controller.getInstance().trigger("cooperate");
-                displayDialog("Scenario4",Controller.getInstance().getInterventionText("cooperate"), R.layout.scenario4);
+                displayDialog("Scenario4", Controller.getInstance().getInterventionText("cooperate"), R.layout.scenario4);
                 break;
         }
 
