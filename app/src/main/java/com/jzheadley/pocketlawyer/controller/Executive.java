@@ -1,10 +1,8 @@
-package com.jzheadley.pocketlawyer.model;
+package com.jzheadley.pocketlawyer.controller;
+
+import com.jzheadley.pocketlawyer.data.model.Intervention;
 
 import java.util.HashMap;
-
-/**
- * Created by pjhud on 2/11/2017.
- */
 
 public class Executive {
 

@@ -1,4 +1,4 @@
-package com.jzheadley.pocketlawyer.model;
+package com.jzheadley.pocketlawyer.data.model;
 
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 

@@ -1,6 +1,7 @@
-package com.jzheadley.pocketlawyer.model;
+package com.jzheadley.pocketlawyer.controller;
 
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
+import com.jzheadley.pocketlawyer.data.model.Report;
 
 import java.util.List;
 
@@ -10,13 +11,13 @@ import java.util.List;
  * Provides all interfaces necessary for model;
  */
 
-public class Model {
+public class Controller {
 
     private Executive executive;
 
     private Interpreter interpreter;
 
-    public Model() {
+    public Controller() {
         //Initialize all the hard-coded stuff;
     }
 
@@ -53,7 +54,6 @@ public class Model {
     }
 
     public void interpretResults(SpeechResults speechResults) {
-
     }
 
     public String getTTSString() { //TODO -Not a real function - just a reminder
