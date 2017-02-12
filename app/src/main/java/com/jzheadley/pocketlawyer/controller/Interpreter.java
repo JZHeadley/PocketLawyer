@@ -23,9 +23,9 @@ public class Interpreter {
     private static final String[] cities = {"Washington, DC", "Richmond, VA", "Alexandria, VA", "Baltimore, MD"};
 
 
-    private static String interactionID = null;
-    private static String location = null;
-    private static Location coordinates = null;
+    private int interactionID = 0;
+    private String location = null;
+    private Location coordinates = null;
 
 
     private SpeechToTextService speechToText;
@@ -40,7 +40,7 @@ public class Interpreter {
     public void startSTT() {
         Log.d(TAG, "startSTT: Called");
         Random rand = new Random(System.currentTimeMillis());
-        interactionID = String.valueOf(rand.nextInt());
+        interactionID = rand.nextInt();
         location = cities[rand.nextInt(4)];
         coordinates = new Location("GPS");
         coordinates.setLongitude(38.0 + 2.0 * rand.nextDouble());
@@ -85,7 +85,8 @@ public class Interpreter {
 
 
         Report report = new Report();
-        report.setInteractionID(interactionID);
+        report.setReportID((interactionID * 10000) + speechResults.getResultIndex());
+        report.setInteractionID(String.valueOf(interactionID));
         report.setResultIndex(speechResults.getResultIndex());
         //location = "Washington, DC";
         //coordinates.setLongitude(38.904862);

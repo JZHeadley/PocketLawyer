@@ -7,21 +7,21 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBIgnore;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBIndexHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.JsonMarshaller;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeakerLabel;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.Transcript;
 
-import java.util.List;
 import java.util.Set;
 
 @DynamoDBTable(tableName = "PocketLawyerReports")
 public class Report {
+    private int reportID;
+
     private String interactionID;
     private int resultIndex;
+    private String userID;
 
     private String location;
-    private Set<String> _tags;
+
+    private Set<String> tags;
     private SpeechResults speechResults;
 
     private String transcript;
@@ -29,6 +29,14 @@ public class Report {
     private String userEthnicity;
 
     private Location coordinates;
+
+    public int getReportID() {
+        return reportID;
+    }
+
+    public void setReportID(int reportID) {
+        this.reportID = reportID;
+    }
 
     @DynamoDBHashKey(attributeName = "interactionID")
     public String getInteractionID() {
@@ -57,14 +65,21 @@ public class Report {
         this.resultIndex = resultIndex;
     }
 
-    @DynamoDBAttribute
-    @DynamoDBIgnore
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    @DynamoDBAttribute(attributeName = "tags")
     public Set<String> getTags() {
-        return _tags;
+        return tags;
     }
 
     public void setTags(Set<String> tags) {
-        this._tags = tags;
+        this.tags = tags;
     }
 
     // @DynamoDBAttribute
@@ -110,33 +125,5 @@ public class Report {
 
     public void setTranscript(String transcript) {
         this.transcript = transcript;
-    }
-
-    public class MySpeechResults extends SpeechResults {
-
-        public MySpeechResults() {
-        }
-
-        public MySpeechResults(SpeechResults speechResults) {
-            setResults(speechResults.getResults());
-        }
-
-        @Override
-        public void setResultIndex(int resultIndex) {
-            super.setResultIndex(resultIndex);
-        }
-
-        @Override
-        public void setResults(List<Transcript> results) {
-            super.setResults(results);
-        }
-
-        @Override
-        public void setSpeakerLabels(List<SpeakerLabel> speakerLabels) {
-            super.setSpeakerLabels(speakerLabels);
-        }
-    }
-
-    public class SpeechResultsMarshaller extends JsonMarshaller<MySpeechResults> {
     }
 }
