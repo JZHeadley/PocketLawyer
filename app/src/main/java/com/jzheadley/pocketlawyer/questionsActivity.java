@@ -84,7 +84,7 @@ public class QuestionsActivity extends AppCompatActivity {
                 break;
             case R.id.done:
                 Controller.getInstance().startWaiting();
-                displayDialog("Done", "A transcript of your interaction has been stored in the PocketLawyer database. Contact PocketLawyer for access to your records.", R.layout.scenario3);
+                displayDialog("Done", "A transcript of your interaction has been stored in the PocketLawyer database. Contact PocketLawyer for access to your records.", R.layout.scenario4);
                 break;
             // displayDialog("Scenario4", Controller.getInstance().getInterventionText("cooperate"), R.layout.scenario4);
             // break;
