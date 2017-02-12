@@ -43,11 +43,8 @@
         android:id="@+id/test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_next"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
         android:layout_marginBottom="107dp"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:text="gtsting" />
+        android:text="testing"
+        android:layout_above="@+id/btn_next"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
