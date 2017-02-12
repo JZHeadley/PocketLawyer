@@ -1,7 +1,7 @@
 package com.jzheadley.pocketlawyer.data.model;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBIndexHashKey;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 
@@ -18,7 +18,7 @@ public class Report {
     private boolean userIsFemale;
     private String userEthnicity;
 
-    @DynamoDBIndexHashKey(attributeName = "interactionID")
+    @DynamoDBHashKey(attributeName = "interactionID")
     public String getInteractionID() {
         return interactionID;
     }
