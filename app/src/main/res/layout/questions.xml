@@ -10,6 +10,9 @@
         android:src="@drawable/ic_pause_2x"
         android:gravity="center"
         />
+
+
+
     <TextView
         android:id="@+id/help"
         android:text="@string/canWeHelp"
