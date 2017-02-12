@@ -5,4 +5,9 @@
     <string name="keep_calm">Keep Calm,\nListen to Us</string>
     <string name="next_button">Next</string>
     <string name="record_button">Record</string>
+    <string name="scenario1">Scenario1</string>
+    <string name="scenario2">Scenario2</string>
+    <string name="scenario3">Scenario3</string>
+    <string name="canWeHelp">What can we help you with?</string>
+    <string name="done_button">Done</string>
 </resources>
