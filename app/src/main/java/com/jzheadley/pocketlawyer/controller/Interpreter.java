@@ -1,10 +1,14 @@
 package com.jzheadley.pocketlawyer.controller;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.util.Log;
 
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.Transcript;
+import com.jzheadley.pocketlawyer.App;
 import com.jzheadley.pocketlawyer.data.model.Report;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
 import com.jzheadley.pocketlawyer.data.singletons.DynamoMapperClient;
@@ -56,6 +60,7 @@ public class Interpreter {
     public void pauseSTT() throws InterruptedException {
         speechToText.pauseRecording();
     }
+
     public void stopSTT() {
         try {
             speechToText.stopRecording();
@@ -89,18 +94,16 @@ public class Interpreter {
         report.setReportID((interactionID * 10000) + speechResults.getResultIndex());
         report.setInteractionID(String.valueOf(interactionID));
         report.setResultIndex(speechResults.getResultIndex());
-        //location = "Washington, DC";
-        //coordinates.setLongitude(38.904862);
-        //coordinates.setLatitude(-77.033642);
 
         report.setSpeechResults(speechResults);
         report.setTranscript(text);
 
         report.setLocation(location);
-        // report.setCoordinates(coordinates);
+        SharedPreferences preferences = App.get().getSharedPreferences("PocketLawyer", MODE_PRIVATE);
 
-        report.setUserIsFemale(false);
-        report.setUserEthnicity("White");
+        report.setUserEthnicity(preferences.getString("ethnicity", " "));
+        report.setUserIsFemale(preferences.getBoolean("isFemale", true));
+        report.setUserID(preferences.getString("username", " "));
 
         for (String keyword : keywordsFound) {   //HACK : this picks a keyword at random
             report.setTags(keywordsFound);

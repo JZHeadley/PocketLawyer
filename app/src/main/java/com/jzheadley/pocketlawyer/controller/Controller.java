@@ -140,4 +140,9 @@ public class Controller {
     public String getInterventionText(String triggerName) {
         return interventions.get(triggerName).getPromptText();
     }
+
+    public void stopInteraction() {
+        executive.stopInteraction();
+
+    }
 }

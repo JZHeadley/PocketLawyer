@@ -1,110 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:background="@color/black">
+
 
     <ImageButton
-        android:adjustViewBounds="false"
-        android:background="@drawable/ic_pause"
-        android:gravity="center_horizontal"
         android:id="@+id/pauseButton"
-        android:layout_height="50dp"
-        android:layout_width="50dp"
-        android:maxHeight="50dp"
-        android:maxWidth="50dp"
-        android:onClick="onClick" />
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:onClick="onClick"
+        android:src="@drawable/ic_pause" />
 
     <TextView
-        android:fontFamily="cursive"
-        android:gravity="center"
         android:id="@+id/help"
-        android:layout_below="@id/pauseButton"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pauseButton"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
         android:text="@string/canWeHelp"
-        android:textColor="@color/black"
+        android:textColor="@color/light_grey"
         android:textSize="35sp" />
 
+    <pl.droidsonroids.gif.GifTextView
+        android:id="@+id/wavegif2"
+        android:layout_width="match_parent"
+        android:layout_height="2in"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/help"
+        android:background="@drawable/wave4"
+        />
 
-    <!-- <ImageButton
-         android:id="@+id/scenario1"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/help"
-         android:background="@null"
-         android:onClick="onClick"
-         android:src="@drawable/quote"
-         android:text="@string/scenario1"
-         android:textAllCaps="false"
-         android:textSize="30sp" />-->
 
     <Button
-        android:background="@drawable/quote"
-        android:gravity="center"
         android:id="@+id/scenario1"
         android:layout_below="@+id/help"
+        android:text="@string/scenario1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:onClick="onClick"
-        android:paddingLeft="45dp"
         android:paddingRight="15dp"
-        android:text="@string/scenario1"
+        android:paddingLeft="45dp"
+        android:onClick="onClick"
+        android:gravity="center"
+        android:background="@drawable/quote"
         android:textAllCaps="false"
         android:textSize="20sp" />
 
     <Button
         android:id="@+id/scenario2"
         android:layout_below="@+id/scenario1"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:onClick="onClick"
         android:text="@string/scenario2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="45dp"
+        android:onClick="onClick"
+        android:gravity="center"
+        android:background="@drawable/quote"
         android:textAllCaps="false"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/scenario3"
         android:layout_below="@+id/scenario2"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:onClick="onClick"
         android:text="@string/scenario3"
-        android:textAllCaps="false"
-        android:textSize="30sp" />
-
-    <!--<Button
-        android:id="@+id/scenario4"
-        android:layout_below="@+id/scenario3"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="45dp"
         android:onClick="onClick"
-        android:text="@string/scenario4"
+        android:gravity="center"
+        android:background="@drawable/quote"
         android:textAllCaps="false"
-        android:textSize="30sp" />-->
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/done"
-        android:layout_below="@+id/scenario3"
+        android:background="@color/dark_grey"
+        android:layout_width="1in"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/scenario3"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
         android:onClick="onClick"
         android:text="@string/done_button"
         android:textAllCaps="false"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

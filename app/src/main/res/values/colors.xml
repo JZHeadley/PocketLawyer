@@ -5,10 +5,12 @@
     <color name="off_white">#FFF5F5F5</color>
     <color name="black">#FF000000</color>
     <color name="light_grey">#FFBCBCBC</color>
+    <color name="light_blue">#95E1F5</color>
 
 
     <!--Non app colors-->
     <color name="colorPrimary">#FFF5F5F5</color>
     <color name="colorPrimaryDark">#FFF5F5F5</color>
     <color name="colorAccent">#FFF5F5F5</color>
+    <color name="background_white">#ffffff</color>
 </resources>

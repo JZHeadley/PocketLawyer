@@ -102,8 +102,8 @@ public class QuestionsActivity extends AppCompatActivity {
                 Controller.getInstance().pauseUnpause();
                 break;
         }
-
     }
 
-
 }
+
+
