@@ -16,10 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/pauseButton"
-        android:onClick="onClick"
         android:gravity="center"
-        android:src="@drawable/ic_mic_2x"
-        />
+        android:onClick="onClick"
+        android:src="@drawable/ic_mic_2x" />
 
     <TextView
         android:id="@+id/help"
@@ -27,36 +26,39 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/pauseButton"
         android:layout_marginTop="15dp"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:text="@string/canWeHelp"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="35sp" />
 
-    <ImageButton
+
+   <!-- <ImageButton
         android:id="@+id/scenario1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/help"
         android:background="@null"
-        android:layout_below="@+id/help"
         android:onClick="onClick"
-        android:text="@string/scenario1"
-        android:textAllCaps="false"
-        android:textSize="30sp"
         android:src="@drawable/quote"
-        />
-
-    <!--<Button
-        android:id="@+id/scenario1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/help"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:onClick="onClick"
         android:text="@string/scenario1"
         android:textAllCaps="false"
         android:textSize="30sp" />-->
+
+    <Button
+        android:id="@+id/scenario1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/help"
+        android:layout_marginTop="30dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="45dp"
+        android:onClick="onClick"
+        android:text="@string/scenario1"
+        android:gravity="center"
+        android:background="@drawable/quote"
+        android:textAllCaps="false"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/scenario2"
@@ -84,7 +86,7 @@
         android:textAllCaps="false"
         android:textSize="30sp" />
 
-    <Button
+    <!--<Button
         android:id="@+id/scenario4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -95,13 +97,13 @@
         android:onClick="onClick"
         android:text="@string/scenario4"
         android:textAllCaps="false"
-        android:textSize="30sp" />
+        android:textSize="30sp" />-->
 
     <Button
         android:id="@+id/done"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scenario4"
+        android:layout_below="@+id/scenario3"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"

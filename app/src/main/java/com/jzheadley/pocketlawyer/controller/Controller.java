@@ -46,6 +46,9 @@ public class Controller {
 
             interventions.put("detained", new Intervention("detained", "Ask if you are free to go."));
             keyWordsToTriggers.put("questions", "detained");
+
+            interventions.put("ticket", new Intervention("ticket", "Don't argue with the officer, you can argue in court later."));
+            keyWordsToTriggers.put("you a ticket", "ticket");
         }
         if (true) {
             interventions.put("why", new Intervention("why", "You do not need to volunteer any information"));

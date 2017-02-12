@@ -6,16 +6,12 @@
     <string name="tts_password">1rLOXX3geKel</string>
     <string name="next_button">Next</string>
     <string name="record_button">Record</string>
-    <string name="scenario1">Scenario1</string>
-    <string name="scenario2">Scenario2</string>
-    <string name="scenario3">Scenario3</string>
+    <string name="scenario1">I was asked to be searched.</string>
+    <string name="scenario2">I\'m being asked a lot of unnecessary questions.</string>
+    <string name="scenario3">I\'m getting a ticket.</string>
     <string name="canWeHelp">What can we help you with?</string>
     <string name="done_button">Done</string>
     <string name="nowRecording">We are now recording,\nPress next for help</string>
     <string name="testing">Testing</string>
-    <string name="scenario3_text">This is scenario three</string>
-    <string name="scenario2_text">This is scenario 2</string>
-    <string name="scenario1_text">This is scenario one.</string>
     <string name="nav_menu_description">Navigation Menu</string>
-    <string name="scenario4">Scenario4</string>
 </resources>

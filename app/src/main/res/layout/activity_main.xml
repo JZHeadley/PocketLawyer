@@ -30,21 +30,5 @@
         android:layout_alignParentRight="true"
         android:text="@string/next_button" />
 
-    <Button
-        android:id="@+id/btn_record"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_next"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="278dp"
-        android:text="@string/record_button" />
-
-    <Button
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="107dp"
-        android:text="@string/testing"
-        android:layout_above="@+id/btn_next"
-        android:layout_centerHorizontal="true" />
+    
 </RelativeLayout>

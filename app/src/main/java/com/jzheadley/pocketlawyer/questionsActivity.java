@@ -83,7 +83,6 @@ public class questionsActivity extends Activity implements View.OnClickListener 
         });
         dialog.show();
     }
-
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.scenario1:
@@ -107,17 +106,17 @@ public class questionsActivity extends Activity implements View.OnClickListener 
                     dialog.dismiss();
                     dialog = null;
                 }
-                Controller.getInstance().trigger("why");
-                displayDialog("Scenario3", Controller.getInstance().getInterventionText("why"), R.layout.scenario3);
+                Controller.getInstance().trigger("ticket");
+                displayDialog("Scenario3",Controller.getInstance().getInterventionText("ticket"), R.layout.scenario3);
                 break;
-            case R.id.scenario4:
-                if (dialog != null) {
+            /*case R.id.scenario4:
+                if(dialog!=null){
                     dialog.dismiss();
                     dialog = null;
                 }
                 Controller.getInstance().trigger("cooperate");
-                displayDialog("Scenario4", Controller.getInstance().getInterventionText("cooperate"), R.layout.scenario4);
-                break;
+                displayDialog("Scenario4",Controller.getInstance().getInterventionText("cooperate"), R.layout.scenario4);
+                break;*/
         }
 
     }

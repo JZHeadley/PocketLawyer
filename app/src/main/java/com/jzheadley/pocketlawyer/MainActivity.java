@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recordButton = (Button) findViewById(R.id.btn_record);
         nextButton = (Button) findViewById(R.id.btn_next);
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,15 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Controller controller = Controller.getInstance();
-                controller.startInteraction();
 
-
-            }
-        });
     }
 
     @Override
