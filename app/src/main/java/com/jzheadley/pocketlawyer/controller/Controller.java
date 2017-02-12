@@ -18,12 +18,13 @@ import java.util.List;
 public class Controller {
 
     private static final String TAG = "Controller";
-    
+
     private static final Intervention whyIntervention = new Intervention("why", "I don't know, officer.");
     private static final Intervention searchIntervention = new Intervention("search", "I don't know, officer.");
 
 
-    private static Controller instance = null;
+    private static Controller instance = new Controller();
+
 
     private Executive executive;
 
@@ -44,10 +45,6 @@ public class Controller {
     }
 
     public static Controller getInstance() {
-        Log.i(TAG, "getInstance: Called");
-        if (instance == null) {
-            instance = new Controller();
-        }
         return instance;
     }
 

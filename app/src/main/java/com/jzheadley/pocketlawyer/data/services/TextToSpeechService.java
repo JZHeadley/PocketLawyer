@@ -17,7 +17,7 @@ public class TextToSpeechService {
 
         @Override
         protected String doInBackground(String... params) {
-            player.playStream(TextToSpeechClient.getInstance().synthesize(params[0], Voice.EN_LISA).execute());
+            player.playStream(TextToSpeechClient.getInstance().synthesize(params[0], Voice.EN_MICHAEL).execute());
             return "Did synthesize";
         }
     }
