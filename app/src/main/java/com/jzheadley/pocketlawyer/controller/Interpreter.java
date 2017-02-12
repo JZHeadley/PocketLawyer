@@ -7,6 +7,7 @@ import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.Transcript;
 import com.jzheadley.pocketlawyer.data.model.Report;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
+import com.jzheadley.pocketlawyer.data.singletons.DynamoMapperClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class Interpreter {
     private static Location coordinates = null;
 
 
+    private SpeechToTextService speechToText;
     private HashMap<String, String> keyWordsToTriggers;
 
 
@@ -98,7 +100,7 @@ public class Interpreter {
         report.setUserIsFemale(false);
         report.setUserEthnicity("White");
 
-
+        DynamoMapperClient.getMapper().save(report);
 
         for (String keyword : keywordsFound) {   //HACK : this picks a keyword at random
             Controller.getInstance().trigger(keyWordsToTriggers.get(keyword));
