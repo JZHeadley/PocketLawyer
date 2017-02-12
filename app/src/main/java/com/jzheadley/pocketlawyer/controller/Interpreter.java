@@ -72,6 +72,12 @@ public class Interpreter {
 
 
         Report report = new Report();
+        report.setInteractionID(interactionID);
+        report.setLocation("Richmond");
+        report.setTags(new ArrayList<String>(keywordsFound));
+        report.setUserIsFemale(false);
+        report.setUserEthnicity("White");
+
 
 
         for (String keyword : keywordsFound) {   //HACK : this picks a keyword at random
