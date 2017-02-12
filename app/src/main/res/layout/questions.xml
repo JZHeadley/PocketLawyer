@@ -26,35 +26,31 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/pauseButton"
         android:layout_marginTop="15dp"
-        android:fontFamily="cursive"
         android:gravity="center"
         android:text="@string/canWeHelp"
         android:textColor="@color/black"
         android:textSize="35sp" />
 
+    <pl.droidsonroids.gif.GifTextView
+        android:id="@+id/wavegif2"
+        android:layout_width="1.2in"
+        android:layout_height="2in"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/help"
+        android:background="@drawable/giphy"
+        />
 
-   <!-- <ImageButton
-        android:id="@+id/scenario1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/help"
-        android:background="@null"
-        android:onClick="onClick"
-        android:src="@drawable/quote"
-        android:text="@string/scenario1"
-        android:textAllCaps="false"
-        android:textSize="30sp" />-->
 
     <Button
         android:id="@+id/scenario1"
+        android:layout_below="@+id/help"
+        android:text="@string/scenario1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/help"
         android:layout_marginTop="30dp"
         android:paddingRight="15dp"
         android:paddingLeft="45dp"
         android:onClick="onClick"
-        android:text="@string/scenario1"
         android:gravity="center"
         android:background="@drawable/quote"
         android:textAllCaps="false"
@@ -62,54 +58,47 @@
 
     <Button
         android:id="@+id/scenario2"
+        android:layout_below="@+id/scenario1"
+        android:text="@string/scenario2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scenario1"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="45dp"
         android:onClick="onClick"
-        android:text="@string/scenario2"
+        android:gravity="center"
+        android:background="@drawable/quote"
         android:textAllCaps="false"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/scenario3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/scenario2"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:onClick="onClick"
         android:text="@string/scenario3"
-        android:textAllCaps="false"
-        android:textSize="30sp" />
-
-    <!--<Button
-        android:id="@+id/scenario4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scenario3"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="45dp"
         android:onClick="onClick"
-        android:text="@string/scenario4"
+        android:gravity="center"
+        android:background="@drawable/quote"
         android:textAllCaps="false"
-        android:textSize="30sp" />-->
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/done"
-        android:layout_width="match_parent"
+        android:layout_width="1in"
         android:layout_height="wrap_content"
         android:layout_below="@+id/scenario3"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
         android:onClick="onClick"
         android:text="@string/done_button"
         android:textAllCaps="false"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>
