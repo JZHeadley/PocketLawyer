@@ -6,6 +6,7 @@ import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.Transcript;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,6 +16,7 @@ import java.util.Set;
 public class Interpreter {
 
     private static final String TAG = "Interpreter";
+    private SpeechToTextService speechToText;
 
     private HashMap<String, String> keyWordsToTriggers;
 
@@ -25,31 +27,39 @@ public class Interpreter {
 
 
     public void startSTT() {
-        Log.i(TAG, "startSTT: Called");
-        SpeechToTextService speechToText = new SpeechToTextService();
+        Log.d(TAG, "startSTT: Called");
+        speechToText = new SpeechToTextService();
         ArrayList<String> keywords = new ArrayList<String>(keyWordsToTriggers.keySet());
         speechToText.setKeywords(keywords);
         speechToText.startRecording();
     }
 
     public void stopSTT() {
-        //TODO
+        try {
+            speechToText.stopRecording();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
     public void interpretResults(SpeechResults speechResults) {
-        Log.d(TAG, "interpretResults: Called");
+        Log.d(TAG, "interpretResults() called with: speechResults = [" + speechResults + "]");
         String text = "";
         Set<String> keywordsFound = new HashSet<>();
 
         try {
             Transcript transcript = speechResults.getResults().get(0);
+            Log.d(TAG, "interpretResults: transcript: " + transcript);
             text = transcript.getAlternatives().get(0).getTranscript();
+
             keywordsFound = transcript.getKeywordsResult().keySet();
         } catch (Exception ex) {
-
+            Log.e(TAG, "interpretResults: caught", ex);
         }
-
+        Log.d(TAG, "interpretResults: Keywords: " + keywordsFound);
         //TODO listen for yes/no seperately;
 
         for (String keyword : keywordsFound) {   //HACK : this picks a keyword at random
