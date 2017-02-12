@@ -22,7 +22,6 @@ public class Interpreter {
     private static final String TAG = "Interpreter";
     private static final String[] cities = {"Washington, DC", "Richmond, VA", "Alexandria, VA", "Baltimore, MD"};
 
-    private SpeechToTextService speechToText;
 
     private static String interactionID = null;
     private static String location = null;
@@ -75,7 +74,9 @@ public class Interpreter {
             Log.d(TAG, "interpretResults: transcript: " + transcript);
             text = transcript.getAlternatives().get(0).getTranscript();
 
-            keywordsFound = transcript.getKeywordsResult().keySet();
+            if (transcript.getKeywordsResult() != null) {
+                keywordsFound = transcript.getKeywordsResult().keySet();
+            }
         } catch (Exception ex) {
             Log.e(TAG, "interpretResults: caught", ex);
         }

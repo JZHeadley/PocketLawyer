@@ -22,11 +22,9 @@ public class Report {
     private boolean userIsFemale;
     private String userEthnicity;
 
-    @DynamoDBHashKey(attributeName = "interactionID")
     private Location coordinates;
 
-
-    @DynamoDBIndexHashKey(attributeName = "interactionID")
+    @DynamoDBHashKey(attributeName = "interactionID")
     public String getInteractionID() {
         return interactionID;
     }
