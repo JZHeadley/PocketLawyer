@@ -37,7 +37,11 @@ public class SpeechToTextService {
     }
 
     public void pauseRecording() throws InterruptedException {
-        thread.wait();
+        if (thread.getState().equals(Thread.State.WAITING)) {
+            thread.notify();
+        } else {
+            thread.wait();
+        }
     }
 
     public void setKeywords(ArrayList<String> keywords) {

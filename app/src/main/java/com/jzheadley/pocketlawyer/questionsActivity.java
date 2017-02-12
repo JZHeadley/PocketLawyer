@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.jzheadley.pocketlawyer.controller.Controller;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
-import com.jzheadley.pocketlawyer.data.services.TextToSpeechService;
 
 public class questionsActivity extends Activity implements View.OnClickListener {
 
@@ -20,26 +19,31 @@ public class questionsActivity extends Activity implements View.OnClickListener 
     boolean go = false;
     Dialog dialog = null;
     ImageButton micButton;
-    ImageButton pauseButton;
+    ImageButton pausePlayButton;
     private SpeechToTextService speechToTextService;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions);
-        pauseButton = (ImageButton) findViewById(R.id.pauseButton);
+        pausePlayButton = (ImageButton) findViewById(R.id.pauseButton);
         micButton = (ImageButton) findViewById(R.id.micButton);
         speechToTextService = new SpeechToTextService();
-        TextToSpeechService textToSpeechService = new TextToSpeechService();
-        pauseButton.setOnClickListener(new OnClickListener() {
 
+        pausePlayButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    speechToTextService.pauseRecording();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                boolean paused = false;
+                if (!paused) {
+                    v.setBackgroundResource(R.drawable.ic_pause_2x);
+                    // speechToTextService.startRecording();
+                } else {
+                    v.setBackgroundResource(R.drawable.ic_play_arrow);
+                    // try {
+                    // speechToTextService.pauseRecording();
+                    // } catch (InterruptedException e) {
+                    //     e.printStackTrace();
+                    // }
                 }
-
             }
         });
         micButton.setOnClickListener(new OnClickListener() {
@@ -56,6 +60,7 @@ public class questionsActivity extends Activity implements View.OnClickListener 
             }
 
         });
+        speechToTextService.startRecording();
 
     }
 

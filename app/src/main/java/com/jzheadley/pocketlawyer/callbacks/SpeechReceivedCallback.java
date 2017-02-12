@@ -15,6 +15,7 @@ public class SpeechReceivedCallback implements RecognizeCallback {
      */
     @Override
     public void onTranscription(SpeechResults speechResults) {
+        Log.d(TAG, "onTranscription: got results");
         Controller.getInstance().interpretResults(speechResults);
     }
 
