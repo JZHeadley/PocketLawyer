@@ -18,7 +18,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="51dp"
         android:gravity="center"
-        android:text="@string/keep_calm"
+        android:text="@string/nowRecording"
         android:textSize="32sp" />
 
     <Button
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="107dp"
-        android:text="testing"
+        android:text="@string/testing"
         android:layout_above="@+id/btn_next"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

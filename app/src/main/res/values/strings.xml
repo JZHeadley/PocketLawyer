@@ -4,7 +4,6 @@
     <string name="stt_password">eR3ZouirbNdT</string>
     <string name="tts_username">f47ff4a4-6cab-4996-9902-f9fa987f0ba3</string>
     <string name="tts_password">1rLOXX3geKel</string>
-    <string name="keep_calm">Keep Calm,\nListen to Us</string>
     <string name="next_button">Next</string>
     <string name="record_button">Record</string>
     <string name="scenario1">Scenario1</string>
@@ -12,4 +11,6 @@
     <string name="scenario3">Scenario3</string>
     <string name="canWeHelp">What can we help you with?</string>
     <string name="done_button">Done</string>
+    <string name="nowRecording">We are now recording,\nPress next for help</string>
+    <string name="testing">Testing</string>
 </resources>
