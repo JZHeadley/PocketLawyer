@@ -1,5 +1,7 @@
 package com.jzheadley.pocketlawyer.controller;
 
+import android.util.Log;
+
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.Transcript;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
@@ -11,6 +13,8 @@ import java.util.Set;
 
 
 public class Interpreter {
+
+    private static final String TAG = "Interpreter";
 
     private Executive executive;
 
@@ -24,6 +28,7 @@ public class Interpreter {
 
 
     public void startSTT() {
+        Log.i(TAG, "startSTT: Called");
         SpeechToTextService speechToText = new SpeechToTextService();
         ArrayList<String> keywords = new ArrayList<String>(keyWordsToTriggers.keySet());
         speechToText.setKeywords(keywords);
@@ -34,7 +39,9 @@ public class Interpreter {
         //TODO
     }
 
+
     public void interpretResults(SpeechResults speechResults) {
+        Log.d(TAG, "interpretResults: Called");
         String text = "";
         Set<String> keywordsFound = new HashSet<>();
 

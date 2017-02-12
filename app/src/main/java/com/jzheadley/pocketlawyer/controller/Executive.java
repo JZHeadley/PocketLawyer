@@ -1,6 +1,7 @@
 package com.jzheadley.pocketlawyer.controller;
 
 import com.jzheadley.pocketlawyer.data.model.Intervention;
+import com.jzheadley.pocketlawyer.data.services.TextToSpeechService;
 
 import java.util.HashMap;
 
@@ -15,6 +16,7 @@ public class Executive {
     public static final int INTERV_PLAYING = 2;
     public static final int INTERV_YES_NO = 3;
     public static final int INTERV_RECORD_RESPONSE = 4;
+
 
     private int situationState;
     private int interventionState;
@@ -32,7 +34,6 @@ public class Executive {
     public void startInteraction() {
         this.situationState = SIT_INTERACTING;
         Controller.getInstance().getInterpreter().startSTT();
-
     }
 
     public void startQuestions() {
@@ -65,7 +66,8 @@ public class Executive {
     public void pauseDetected() {
         if (interventionState == INTERV_WAITING_FOR_PAUSE) {
             interventionState = INTERV_PLAYING;
-            //TODO: Text to Speech
+            TextToSpeechService textToSpeech = new TextToSpeechService();
+            textToSpeech.speak(curentIntervention.getPromptText());
         }
 
     }

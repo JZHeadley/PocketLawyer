@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.jzheadley.pocketlawyer.controller.Controller;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
 import com.jzheadley.pocketlawyer.data.services.TextToSpeechService;
 
@@ -38,10 +39,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textToSpeechService.speak("Hi i'm watson");
+//                textToSpeechService.speak("Hi i'm watson");
+                Controller controller = Controller.getInstance();
+                controller.startInteraction();
+
+
             }
         });
     }

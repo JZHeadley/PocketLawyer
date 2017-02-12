@@ -1,5 +1,7 @@
 package com.jzheadley.pocketlawyer.controller;
 
+import android.util.Log;
+
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.jzheadley.pocketlawyer.data.model.Intervention;
 import com.jzheadley.pocketlawyer.data.model.Report;
@@ -15,6 +17,8 @@ import java.util.List;
 
 public class Controller {
 
+    private static final String TAG = "Controller";
+    
     private static final Intervention whyIntervention = new Intervention("why", "I don't know, officer.");
     private static final Intervention searchIntervention = new Intervention("search", "I don't know, officer.");
 
@@ -26,6 +30,7 @@ public class Controller {
     private Interpreter interpreter;
 
     private Controller() {
+        Log.i(TAG, "Controller: ");
         HashMap<String, Intervention> interventions = new HashMap<>();
         interventions.put("why", new Intervention("why", "I don't know, officer."));
         interventions.put("search", new Intervention("search", "I don't know, officer."));
@@ -39,7 +44,11 @@ public class Controller {
     }
 
     public static Controller getInstance() {
-        return (instance == null) ? new Controller() : instance;
+        Log.i(TAG, "getInstance: Called");
+        if (instance == null) {
+            instance = new Controller();
+        }
+        return instance;
     }
 
     /* Used by ViewControllers */
