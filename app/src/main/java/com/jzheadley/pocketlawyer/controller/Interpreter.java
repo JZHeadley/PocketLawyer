@@ -53,6 +53,9 @@ public class Interpreter {
         speechToText.startRecording();
     }
 
+    public void pauseSTT() throws InterruptedException {
+        speechToText.pauseRecording();
+    }
     public void stopSTT() {
         try {
             speechToText.stopRecording();

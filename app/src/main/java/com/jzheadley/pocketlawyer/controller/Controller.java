@@ -20,16 +20,10 @@ public class Controller {
     private static final String TAG = "Controller";
 
 
-
-
     private static Controller instance = new Controller();
-
-
-    private Executive executive;
-
-    private Interpreter interpreter;
-
     HashMap<String, Intervention> interventions;
+    private Executive executive;
+    private Interpreter interpreter;
 
     private Controller() {
         Log.i(TAG, "Controller: Constructor called");

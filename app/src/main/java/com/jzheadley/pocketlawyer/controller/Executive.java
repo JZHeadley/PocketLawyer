@@ -8,18 +8,15 @@ import com.jzheadley.pocketlawyer.data.services.TextToSpeechService;
 import java.util.HashMap;
 
 public class Executive {
-    private static final String TAG = "Executive";
-
     public static final int SIT_WAITING = 0;
     public static final int SIT_INTERACTING = 1;
     public static final int SIT_QUESTIONS = 2;
-
     public static final int INTERV_NONE = 0;
     public static final int INTERV_WAITING_FOR_PAUSE = 1;
     public static final int INTERV_PLAYING = 2;
     public static final int INTERV_YES_NO = 3;
     public static final int INTERV_RECORD_RESPONSE = 4;
-
+    private static final String TAG = "Executive";
     private int situationState;
     private int interventionState;
     private HashMap<String, Intervention> interventions; //Maps triggers to interventions
@@ -38,13 +35,23 @@ public class Executive {
         Controller.getInstance().getInterpreter().startSTT();
     }
 
+    public void pauseInteraction() throws InterruptedException {
+        Controller.getInstance().getInterpreter().pauseSTT();
+    }
+
+    public void stopInteraction() {
+        Controller.getInstance().getInterpreter().stopSTT();
+    }
+
     public void startQuestions() {
 
     }
 
     public void trigger(String triggerName) {
         Log.d(TAG, "trigger: triggerName: " + triggerName + " intervState: " + interventionState);
-        if (triggerName == null) return;
+        if (triggerName == null) {
+            return;
+        }
 
         if (triggerName == "yes") {
             if (interventionState == INTERV_YES_NO) {
