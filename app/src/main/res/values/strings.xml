@@ -13,4 +13,7 @@
     <string name="done_button">Done</string>
     <string name="nowRecording">We are now recording,\nPress next for help</string>
     <string name="testing">Testing</string>
+    <string name="scenario3_text">Scenario one</string>
+    <string name="scenario2_text">Scenario two</string>
+    <string name="scenario1_text">Scenario three</string>
 </resources>

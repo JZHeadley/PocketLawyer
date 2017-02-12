@@ -7,7 +7,8 @@
         android:id="@+id/text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/off_white"
+        android:textColor="@color/black"
+        android:textSize="30dp"
         />
 
     <Button
@@ -16,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="@string/done_button"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
+        android:gravity="center"
         android:layout_below="@+id/text"
         />
 
