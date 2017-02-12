@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
 
     <ImageButton
         android:id="@+id/pauseButton"
@@ -19,16 +21,16 @@
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="@string/canWeHelp"
-        android:textColor="@color/black"
+        android:textColor="@color/light_grey"
         android:textSize="35sp" />
 
     <pl.droidsonroids.gif.GifTextView
         android:id="@+id/wavegif2"
-        android:layout_width="1.2in"
+        android:layout_width="match_parent"
         android:layout_height="2in"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@id/help"
-        android:background="@drawable/giphy"
+        android:background="@drawable/wave4"
         />
 
 
@@ -79,6 +81,7 @@
 
     <Button
         android:id="@+id/done"
+        android:background="@color/dark_grey"
         android:layout_width="1in"
         android:layout_height="wrap_content"
         android:layout_below="@+id/scenario3"
