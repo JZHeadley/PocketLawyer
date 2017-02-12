@@ -28,11 +28,12 @@ public class SpeechReceivedCallback implements RecognizeCallback {
     }
 
     @Override
-    public void onError(Exception e) {
-        System.err.println(e);
+    public void onError(Exception exception) {
+        System.err.println(exception);
     }
 
     @Override
     public void onDisconnected() {
+        Log.d(TAG, "onDisconnected: Disconnected from watson");
     }
 }
