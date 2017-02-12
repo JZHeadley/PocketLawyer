@@ -14,7 +14,7 @@
         android:name=".App"
         android:supportsRtl="true"
         android:theme="@style/custom_theme">
-        <activity android:name=".questionsActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.jzheadley.pocketlawyer.START_RECORDING" />
@@ -22,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".QuestionsActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
