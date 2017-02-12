@@ -17,4 +17,5 @@
     <string name="scenario2_text">This is scenario 2</string>
     <string name="scenario1_text">This is scenario one.</string>
     <string name="nav_menu_description">Navigation Menu</string>
+    <string name="scenario4">Scenario4</string>
 </resources>

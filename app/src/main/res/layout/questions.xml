@@ -80,11 +80,25 @@
         />
 
     <Button
+        android:id="@+id/scenario4"
+        android:text="@string/scenario4"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:layout_below="@+id/scenario3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        />
+
+    <Button
         android:id="@+id/done"
         android:text="@string/done_button"
         android:textAllCaps="false"
         android:textSize="30sp"
-        android:layout_below="@+id/scenario3"
+        android:layout_below="@+id/scenario4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"

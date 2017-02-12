@@ -54,10 +54,28 @@ public class questionsActivity extends Activity implements View.OnClickListener 
                 displayDialog("Scenario1",Controller.getInstance().getInterventionText("search"), R.layout.scenario1);
                 break;
             case R.id.scenario2:
-                displayDialog("Scenario2",getString(R.string.scenario2_text), R.layout.scenario2);
+                if(dialog!=null){
+                    dialog.dismiss();
+                    dialog = null;
+                }
+                Controller.getInstance().trigger("detained");
+                displayDialog("Scenario2",Controller.getInstance().getInterventionText("detained"), R.layout.scenario2);
                 break;
             case R.id.scenario3:
-                displayDialog("Scenario3",getString(R.string.scenario3_text), R.layout.scenario3);
+                if(dialog!=null){
+                    dialog.dismiss();
+                    dialog = null;
+                }
+                Controller.getInstance().trigger("why");
+                displayDialog("Scenario3",Controller.getInstance().getInterventionText("why"), R.layout.scenario3);
+                break;
+            case R.id.scenario4:
+                if(dialog!=null){
+                    dialog.dismiss();
+                    dialog = null;
+                }
+                Controller.getInstance().trigger("cooperate");
+                displayDialog("Scenario4",Controller.getInstance().getInterventionText("cooperate"), R.layout.scenario4);
                 break;
         }
     }
