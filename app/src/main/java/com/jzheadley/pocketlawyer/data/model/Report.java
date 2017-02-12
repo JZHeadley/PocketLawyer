@@ -1,5 +1,7 @@
 package com.jzheadley.pocketlawyer.data.model;
 
+import android.location.Location;
+
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBIndexHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
@@ -10,13 +12,16 @@ import java.util.List;
 @DynamoDBTable(tableName = "PocketLawyerReports")
 public class Report {
     private String interactionID;
-    //public Float locationEast;
-    //public Float locationNorth;
+    private int resultIndex;
+
     private String location;
     private List<String> tags;
     private SpeechResults speechResults;
     private boolean userIsFemale;
     private String userEthnicity;
+
+    private Location coordinates;
+
 
     @DynamoDBIndexHashKey(attributeName = "interactionID")
     public String getInteractionID() {
@@ -30,6 +35,14 @@ public class Report {
     @DynamoDBAttribute(attributeName = "location")
     public String getLocation() {
         return location;
+    }
+
+    public int getResultIndex() {
+        return resultIndex;
+    }
+
+    public void setResultIndex(int resultIndex) {
+        this.resultIndex = resultIndex;
     }
 
     public void setLocation(String location) {
@@ -70,5 +83,13 @@ public class Report {
 
     public void setUserEthnicity(String userEthnicity) {
         this.userEthnicity = userEthnicity;
+    }
+
+    public Location getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Location coordinates) {
+        this.coordinates = coordinates;
     }
 }
