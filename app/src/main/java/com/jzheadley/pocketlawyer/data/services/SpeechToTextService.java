@@ -32,7 +32,7 @@ public class SpeechToTextService {
         thread.end();
     }
 
-    public void setKeywords(List<String> keywords) {
+    public void setKeywords(ArrayList<String> keywords) {
         this.keywords = keywords;
     }
 
@@ -45,7 +45,8 @@ public class SpeechToTextService {
             .profanityFilter(false)
             .inactivityTimeout(2000);
         if (keywords.size() > 0) {
-            options.keywords((String[]) keywords.toArray());
+            String[] keywordArr = keywords.toArray(new String[0]);
+            options.keywords(keywordArr);
         }
         return options.build();
     }
