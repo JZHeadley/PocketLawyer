@@ -39,6 +39,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:onClick="onClick"
         android:text="@string/next_button" />
 
     

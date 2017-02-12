@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".QuestionsActivity"
+            android:name=".questionsActivity"
             android:parentActivityName=".MainActivity" />
     </application>
 
