@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
+import com.jzheadley.pocketlawyer.data.services.TextToSpeechService;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         recordButton = (Button) findViewById(R.id.btn_record);
         nextButton = (Button) findViewById(R.id.btn_next);
         speechToTextService = new SpeechToTextService();
+        final TextToSpeechService textToSpeechService = new TextToSpeechService();
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textToSpeechService.speak("Hi i'm watson");
             }
         });
     }
