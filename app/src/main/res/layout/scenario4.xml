@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="fill_parent"
+        android:layout_height="2.1in"
+        android:background="@drawable/popup2"
+        android:gravity="center_horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="20dp"
+        android:textColor="@color/light_blue"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/done_popup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="270dp"
+        android:background="@null"
+        android:gravity="center"
+        android:text="@string/done_button"
+        android:textColor="@color/off_white"
+        android:textSize="20dp"
+
+        />
+
+
+</RelativeLayout>
