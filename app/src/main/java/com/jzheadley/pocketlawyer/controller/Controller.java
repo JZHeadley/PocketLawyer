@@ -19,8 +19,7 @@ public class Controller {
 
     private static final String TAG = "Controller";
 
-    private static final Intervention whyIntervention = new Intervention("why", "I don't know, officer.");
-    private static final Intervention searchIntervention = new Intervention("search", "I don't know, officer.");
+
 
 
     private static Controller instance = new Controller();
@@ -36,14 +35,16 @@ public class Controller {
             Log.i(TAG, "Controller: instance is null");
         }
         HashMap<String, Intervention> interventions = new HashMap<>();
-        interventions.put("why", new Intervention("why", "I don't know, officer."));
-        interventions.put("search", new Intervention("search", "I don't know, officer."));
+        interventions.put("why", new Intervention("why", "I don't know."));
+        interventions.put("search", new Intervention("search", "Remember, you don't have to consent to searches"));
+        interventions.put("detained", new Intervention("detained", "Ask if you are free to go."));
         this.executive = new Executive(interventions);
 
         HashMap<String, String> keyWordsToTriggers = new HashMap<>();
         keyWordsToTriggers.put("trunk", "search");
         keyWordsToTriggers.put("open", "search");
         keyWordsToTriggers.put("why", "why");
+        keyWordsToTriggers.put("questions", "detained");
         this.interpreter = new Interpreter(keyWordsToTriggers);
     }
 
@@ -86,7 +87,7 @@ public class Controller {
     } //TODO: Delete this
 
     public void interpretResults(SpeechResults speechResults) {
-        Log.d(TAG, "interpretResults() called with: speechResults = [" + speechResults + "]");
+
         interpreter.interpretResults(speechResults);
     }
 
@@ -95,7 +96,7 @@ public class Controller {
     } //TODO: Delete this
 
     public void playComplete() {
-
+        executive.playComplete();
     }
 
     public Report getReport() {  //TODO - Not a real function - just a reminder

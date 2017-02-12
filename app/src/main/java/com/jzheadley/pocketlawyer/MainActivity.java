@@ -1,5 +1,6 @@
 package com.jzheadley.pocketlawyer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,9 +16,8 @@ import com.jzheadley.pocketlawyer.data.services.TextToSpeechService;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private Button recordButton;
+    private Button recordButton, nextButton;
     private SpeechToTextService speechToTextService;
-    private Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +43,8 @@ public class MainActivity extends AppCompatActivity {
         });
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                try {
-                    speechToTextService.stopRecording();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, questionsActivity.class));
             }
         });
         findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
