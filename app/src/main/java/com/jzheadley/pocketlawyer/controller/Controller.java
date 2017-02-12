@@ -33,7 +33,7 @@ public class Controller {
         interventions = new HashMap<>();
         HashMap<String, String> keyWordsToTriggers = new HashMap<>();
         if (true) {
-            interventions.put("search", new Intervention("search", "You don't have to consent to searches"));
+            interventions.put("search", new Intervention("search", "You do not have to consent to searches"));
             keyWordsToTriggers.put("trunk", "search");
             keyWordsToTriggers.put("open", "search");
             keyWordsToTriggers.put("search", "search");
@@ -41,7 +41,7 @@ public class Controller {
             interventions.put("detained", new Intervention("detained", "Ask if you are free to go."));
             keyWordsToTriggers.put("questions", "detained");
 
-            interventions.put("ticket", new Intervention("ticket", "Don't argue with the officer, you can argue in court later."));
+            interventions.put("ticket", new Intervention("ticket", "Do not argue with the officer, you can argue in court later."));
             keyWordsToTriggers.put("you a ticket", "ticket");
         }
         if (true) {
@@ -54,6 +54,7 @@ public class Controller {
             interventions.put("cooperate", new Intervention("cooperate", "Stay calm and cooperate"));
             keyWordsToTriggers.put("step out", "cooperate");
             keyWordsToTriggers.put("get out", "cooperate");
+            keyWordsToTriggers.put("under arrest", "cooperate");
 
         }
 
@@ -75,6 +76,16 @@ public class Controller {
 
     public void startInteraction() {
         executive.startInteraction();
+    }
+
+    public void pauseUnpause() {
+        if (executive.getSituationState() == Executive.SIT_INTERACTING) {
+            Log.d(TAG, "pauseUnpause: Pausing");
+            executive.startWaiting();
+        } else {
+            Log.d(TAG, "pauseUnpause: Unpausing");
+            executive.startInteraction();
+        }
     }
 
     public void startQuestions() {
@@ -129,4 +140,6 @@ public class Controller {
     public String getInterventionText(String triggerName) {
         return interventions.get(triggerName).getPromptText();
     }
+
+
 }

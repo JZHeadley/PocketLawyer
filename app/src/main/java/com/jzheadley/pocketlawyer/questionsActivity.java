@@ -15,7 +15,8 @@ import android.widget.TextView;
 import com.jzheadley.pocketlawyer.controller.Controller;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
 
-public class questionsActivity extends AppCompatActivity {
+public class QuestionsActivity extends AppCompatActivity {
+    private static final String TAG = "questionsActivity";
 
     final Context context = this;
     boolean go = false;
@@ -81,6 +82,12 @@ public class questionsActivity extends AppCompatActivity {
                 Controller.getInstance().trigger("ticket");
                 displayDialog("Scenario3", Controller.getInstance().getInterventionText("ticket"), R.layout.scenario3);
                 break;
+            case R.id.done:
+                Controller.getInstance().startWaiting();
+                displayDialog("Done", "A transcript of your interaction has been stored in the PocketLawyer database. Contact PocketLawyer for access to your records.", R.layout.scenario3);
+                break;
+            // displayDialog("Scenario4", Controller.getInstance().getInterventionText("cooperate"), R.layout.scenario4);
+            // break;
             /*case R.id.scenario4:
                 if(dialog!=null){
                     dialog.dismiss();
@@ -92,26 +99,11 @@ public class questionsActivity extends AppCompatActivity {
             // displayDialog("Scenario4", Controller.getInstance().getInterventionText("cooperate"), R.layout.scenario4);
             // break;
             case R.id.pauseButton:
-                boolean paused = false;
-                if (!paused) {
-                    view.setBackground(getDrawable(R.drawable.ic_pause));
-                    try {
-                        controller.getExecutive().pauseInteraction();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    view.setBackground(getDrawable(R.drawable.ic_play_arrow));
-                    try {
-                        controller.getExecutive().pauseInteraction();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+                Controller.getInstance().pauseUnpause();
                 break;
         }
-
     }
 
-
 }
+
+

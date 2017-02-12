@@ -17,6 +17,7 @@ public class Executive {
     public static final int INTERV_YES_NO = 3;
     public static final int INTERV_RECORD_RESPONSE = 4;
     private static final String TAG = "Executive";
+
     private int situationState;
     private int interventionState;
     private HashMap<String, Intervention> interventions; //Maps triggers to interventions
@@ -27,7 +28,8 @@ public class Executive {
     }
 
     public void startWaiting() {
-
+        this.situationState = SIT_WAITING;
+        Controller.getInstance().getInterpreter().stopSTT();
     }
 
     public void startInteraction() {
@@ -35,13 +37,13 @@ public class Executive {
         Controller.getInstance().getInterpreter().startSTT();
     }
 
-    public void pauseInteraction() throws InterruptedException {
+    /*public void pauseInteraction() throws InterruptedException {
         Controller.getInstance().getInterpreter().pauseSTT();
     }
 
     public void stopInteraction() {
         Controller.getInstance().getInterpreter().stopSTT();
-    }
+    }*/
 
     public void startQuestions() {
 
@@ -89,6 +91,10 @@ public class Executive {
         }
         //TODO : Handle yes/no and record
 
+    }
+
+    public int getSituationState() {
+        return situationState;
     }
 
 
