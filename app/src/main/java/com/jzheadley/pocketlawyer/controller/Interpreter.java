@@ -4,12 +4,14 @@ import android.util.Log;
 
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.Transcript;
+import com.jzheadley.pocketlawyer.data.model.Report;
 import com.jzheadley.pocketlawyer.data.services.SpeechToTextService;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 
@@ -17,6 +19,9 @@ public class Interpreter {
 
     private static final String TAG = "Interpreter";
     private SpeechToTextService speechToText;
+
+    private static String interactionID = null;
+
 
     private HashMap<String, String> keyWordsToTriggers;
 
@@ -28,6 +33,9 @@ public class Interpreter {
 
     public void startSTT() {
         Log.d(TAG, "startSTT: Called");
+        interactionID = String.valueOf(new Random(System.currentTimeMillis()).nextInt());
+
+
         speechToText = new SpeechToTextService();
         ArrayList<String> keywords = new ArrayList<String>(keyWordsToTriggers.keySet());
         speechToText.setKeywords(keywords);
@@ -61,6 +69,10 @@ public class Interpreter {
         }
         Log.d(TAG, "interpretResults: Keywords: " + keywordsFound);
         //TODO listen for yes/no seperately;
+
+
+        Report report = new Report();
+
 
         for (String keyword : keywordsFound) {   //HACK : this picks a keyword at random
             Controller.getInstance().trigger(keyWordsToTriggers.get(keyword));
