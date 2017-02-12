@@ -25,6 +25,9 @@
         <activity
             android:name=".questionsActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

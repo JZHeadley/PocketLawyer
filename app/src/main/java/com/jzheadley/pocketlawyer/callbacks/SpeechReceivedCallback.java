@@ -26,6 +26,7 @@ public class SpeechReceivedCallback implements RecognizeCallback {
 
     @Override
     public void onError(Exception exception) {
+        Log.d(TAG, "onError() called with: exception = [" + exception + "]");
         Log.e(TAG, "onError: ", exception);
     }
 

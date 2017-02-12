@@ -95,23 +95,17 @@ public class questionsActivity extends AppCompatActivity {
                 boolean paused = false;
                 if (!paused) {
                     view.setBackground(getDrawable(R.drawable.ic_pause));
-                    try {
-                        controller.getExecutive().pauseInteraction();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    controller.startInteraction();
+                    // controller.getExecutive().pauseInteraction();
                 } else {
                     view.setBackground(getDrawable(R.drawable.ic_play_arrow));
-                    try {
-                        controller.getExecutive().pauseInteraction();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    // controller.getExecutive().pauseInteraction();
+                    controller.stopInteraction();
                 }
                 break;
         }
-
     }
 
-
 }
+
+
