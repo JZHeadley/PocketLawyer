@@ -7,7 +7,7 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBIndexHas
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 
-import java.util.List;
+import java.util.Set;
 
 @DynamoDBTable(tableName = "PocketLawyerReports")
 public class Report {
@@ -15,8 +15,10 @@ public class Report {
     private int resultIndex;
 
     private String location;
-    private List<String> tags;
+    private Set<String> tags;
     private SpeechResults speechResults;
+
+    private String transcript;
     private boolean userIsFemale;
     private String userEthnicity;
 
@@ -50,11 +52,11 @@ public class Report {
     }
 
     @DynamoDBAttribute(attributeName = "tags")
-    public List<String> getTags() {
+    public Set<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(Set<String> tags) {
         this.tags = tags;
     }
 
@@ -91,5 +93,13 @@ public class Report {
 
     public void setCoordinates(Location coordinates) {
         this.coordinates = coordinates;
+    }
+
+    public String getTranscript() {
+        return transcript;
+    }
+
+    public void setTranscript(String transcript) {
+        this.transcript = transcript;
     }
 }

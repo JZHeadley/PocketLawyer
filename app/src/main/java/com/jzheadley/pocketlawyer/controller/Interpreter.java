@@ -85,14 +85,16 @@ public class Interpreter {
         report.setInteractionID(interactionID);
         report.setResultIndex(speechResults.getResultIndex());
         //location = "Washington, DC";
-        //
-        coordinates.setLongitude(38.904862);
-        coordinates.setLatitude(-77.033642);
+        //coordinates.setLongitude(38.904862);
+        //coordinates.setLatitude(-77.033642);
+
+        report.setSpeechResults(speechResults);
+        report.setTranscript(text);
 
         report.setLocation(location);
         report.setCoordinates(coordinates);
 
-        report.setTags(new ArrayList<String>(keywordsFound));
+        report.setTags(keywordsFound);
         report.setUserIsFemale(false);
         report.setUserEthnicity("White");
 
