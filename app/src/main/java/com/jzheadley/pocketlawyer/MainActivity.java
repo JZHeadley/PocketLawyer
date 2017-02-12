@@ -17,7 +17,7 @@ public class MainActivity extends BaseActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), questionsActivity.class));
+                startActivity(new Intent(getApplicationContext(), QuestionsActivity.class));
             }
         });
     }

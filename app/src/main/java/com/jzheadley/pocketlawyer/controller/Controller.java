@@ -141,8 +141,5 @@ public class Controller {
         return interventions.get(triggerName).getPromptText();
     }
 
-    public void stopInteraction() {
-        executive.stopInteraction();
 
-    }
 }
