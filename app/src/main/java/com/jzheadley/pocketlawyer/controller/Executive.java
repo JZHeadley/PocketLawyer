@@ -1,11 +1,14 @@
 package com.jzheadley.pocketlawyer.controller;
 
+import android.util.Log;
+
 import com.jzheadley.pocketlawyer.data.model.Intervention;
 import com.jzheadley.pocketlawyer.data.services.TextToSpeechService;
 
 import java.util.HashMap;
 
 public class Executive {
+    private static final String TAG = "Executive";
 
     public static final int SIT_WAITING = 0;
     public static final int SIT_INTERACTING = 1;
@@ -40,6 +43,7 @@ public class Executive {
     }
 
     public void trigger(String triggerName) {
+        Log.d(TAG, "trigger: triggerName: " + triggerName + " intervState: " + interventionState);
         if (triggerName == null) return;
 
         if (triggerName == "yes") {
@@ -72,10 +76,11 @@ public class Executive {
     }
 
     public void playComplete() {
+        Log.d(TAG, "playComplete: Called, intervState" + interventionState);
         if (interventionState == INTERV_PLAYING) {
             interventionState = INTERV_NONE;
         }
-        //TODO : Handle
+        //TODO : Handle yes/no and record
 
     }
 

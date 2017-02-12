@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         recordButton = (Button) findViewById(R.id.btn_record);
         nextButton = (Button) findViewById(R.id.btn_next);
         speechToTextService = new SpeechToTextService();

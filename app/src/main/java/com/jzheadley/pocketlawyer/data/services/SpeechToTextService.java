@@ -29,7 +29,11 @@ public class SpeechToTextService {
 
     public void stopRecording() throws InterruptedException, IOException {
         Log.d(TAG, "stopRecording: Stop listening Watson");
-        thread.end();
+        if (thread == null) {
+            return;
+        } else {
+            thread.end();
+        }
     }
 
     public void setKeywords(ArrayList<String> keywords) {
