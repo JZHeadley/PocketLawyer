@@ -7,18 +7,50 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.jzheadley.pocketlawyer.controller.Controller;
 
 public class questionsActivity extends Activity implements View.OnClickListener {
 
-    Dialog dialog = null;
     final Context context = this;
+    boolean go = false;
+    Dialog dialog = null;
+    ImageButton micButton;
+    ImageButton pauseButton;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions);
+        pauseButton = (ImageButton) findViewById(R.id.pauseButton);
+        micButton = (ImageButton) findViewById(R.id.micButton);
+        pauseButton.setOnClickListener(new OnClickListener(){
+
+            @Override
+            public void onClick(View v ){
+              //  speechToTextService.pauseRecording();
+
+            }
+        });
+        micButton.setOnClickListener(new OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+             //   SpeechToTextService.stopRecording();
+
+                if (go) {
+                    v.setBackgroundResource(R.drawable.ic_mic_2x);
+                }
+                else{
+                    v.setBackgroundResource(R.drawable.ic_mic_none_2x);
+                }
+                go = !go;
+
+                }
+
+        });
 
     }
 
@@ -41,8 +73,6 @@ public class questionsActivity extends Activity implements View.OnClickListener 
         });
         dialog.show();
     }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.scenario1:
@@ -78,5 +108,8 @@ public class questionsActivity extends Activity implements View.OnClickListener 
                 displayDialog("Scenario4",Controller.getInstance().getInterventionText("cooperate"), R.layout.scenario4);
                 break;
         }
+
     }
+
+
 }
